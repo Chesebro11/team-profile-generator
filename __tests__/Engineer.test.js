@@ -9,3 +9,27 @@ test('creates an engineer object', () => {
     expect(engineer.email).toEqual(expect.any(String));
     expect(engineer.github).toEqual(expect.any(String));
 })
+
+test('gets enginner name', () => {
+    const engineer = new Engineer('Jared', 2, 'chesebrojared@gmail.com', 'chesebro11')
+
+    expect(engineer.getName()).toEqual(expect.any(String));
+})
+
+test('gets engineer id #', () => {
+    const engineer = new Engineer('Jared', 2, 'chesebrojared@gmail.com', 'chesebro11')
+
+    expect(engineer.getId()).toEqual(expect.any(Number));
+})
+
+test('gets engineer email', () => {
+    const engineer = new Engineer('Jared', 2, 'chesebrojared@gmail.com', 'chesebro11')
+
+    expect(engineer.getEmail()).toEqual(expect.any(String));
+})
+
+test('gets engineer github', () => {
+    const engineer = new Engineer('Jared', 2, 'chesebrojared@gmail.com', 'chesebro11')
+
+    expect(engineer.getGithub()).toEqual(expect.any(String));
+})
