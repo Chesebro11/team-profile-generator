@@ -33,3 +33,9 @@ test('gets engineer github', () => {
 
     expect(engineer.getGithub()).toEqual(expect.any(String));
 })
+
+test('gets role of engineer', () => {
+    const engineer = new Engineer('Jared', 2, 'chesebrojared@gmail.com', 'chesebro11')
+
+    expect(engineer.getRole()).toBe('Engineer')
+})
