@@ -76,5 +76,112 @@ const createManager = () => {
         console.log(manager);
     })
 }
+const createEmployee = () => {
+    console.log('=====================');
 
-createManager()
+    return inquirer.prompt ([
+        {
+            type: 'list',
+            name: 'role',
+            message: 'Select the employees role',
+            choices: ['Engineer', 'Intern']
+        },
+        {
+            type: 'input',
+            name: 'name',
+            message: 'Whats the employees name?',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Please enter the employees name!')
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Whats the employees email?',
+            validate: emailInput => {
+                if (emailInput) {
+                    return true;
+                } else {
+                    console.log('Please enter the employees email!')
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'What is the employees ID?',
+            validate: idInput => {
+                if (idInput) {
+                    return true;
+                } else {
+                    console.log('Please submit the employees ID #')
+                    return false;
+                } 
+            }
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'What is the employees github username?',
+            when: (input) => input.role === 'Engineer',
+            validate: githubInput => {
+                if (githubInput) {
+                    return true;
+                } else {
+                    console.log('Please submit the github username!')
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: 'Please submit the interns school',
+            when: (input) => input.role === 'Intern',
+            validate: schoolInput => {
+                if (schoolInput) {
+                    return true;
+                } else {
+                    console.log('Please submit the interns school!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'confirm',
+            name: 'confirmcreateEmployee',
+            message: 'Would you like to add another employee?',
+            default: 'true',
+        }
+    ])
+    .then(employeeInput => {
+
+        let { name, id, email, role, github, school, confirmcreateEmployee } = employeeInput;
+        let employee;
+
+        if (role === 'Engineer') {
+            employee = new Engineer (name, id, email, github);
+
+            console.log(employee);
+        } else if (role === Intern) {
+            employee = new Intern(name, id, email, school);
+
+            console.log(employee)
+        }
+
+        teamArray.push(employee);
+
+        if (confirmcreateEmployee) {
+            return createEmployee(teamArray);
+        } else {
+            return teamArray;
+        }
+    })
+}
+// createManager()
+createEmployee()
