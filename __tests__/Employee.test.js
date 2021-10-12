@@ -9,3 +9,9 @@ test('creates an employee object', () => {
     expect(employee.id).toEqual(expect.any(Number));
     expect(employee.email).toEqual(expect.any(String));
 })
+
+test('gets employees name', () => {
+    const employee = new Employee('Jared', 2, 'chesebrojared@gmail.com')
+
+    expect(employee.getName()).toEqual(expect.any(String));
+})
