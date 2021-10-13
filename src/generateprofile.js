@@ -38,3 +38,49 @@ const generateEngineer = function (Engineer) {
 `;
 
 }
+
+const generateIntern = function (Intern) {
+    return`
+    <div class='col-4 mt-4>
+        <div class='card h-50>
+            <div class='card-header'>
+                <h3>${Intern.name}</h3>
+                <h4>Engineer</h4><i class='material-icons'></i>
+            </div>
+        
+        <div class='card-body'>
+            <p class='id'>ID: ${Intern.id}</p>
+            <p class='email'>Email: <a href='mailto:${Intern.email}'>${Intern.email}</a></p>
+            <p class="school">School: ${Intern.school} </p>
+        </div>
+        
+        </div>
+    </div>
+`;
+}
+
+generateHTML = (data) => {
+    cardArray = [];
+
+    for (let i = 0; i < data.length; i++) {
+        const employee = data[i];
+        const role = employee.getRole();
+    }
+
+    if (role === 'Manager') {
+        const managerCard = generateManager(employee);
+
+        cardArray.push(managerCard);
+    }
+
+    if (role === 'Engineer') {
+        const engineerCard = generateEngineer(employee);
+
+        cardArray.push(engineerCard);
+    }
+    if (role === 'Intern') {
+        const internCard = generateIntern(employee);
+
+        cardArray.push(internCard);
+    }
+}
