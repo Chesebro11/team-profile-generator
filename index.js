@@ -4,7 +4,6 @@ const generateHTML = require('./src/generateprofile');
 // requires for each role
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
-const Employee = require('./lib/Employee');
 const Intern = require('./lib/Intern');
 
 // inquirer and fs requires
@@ -185,6 +184,16 @@ const createEmployee = () => {
 }
 // createManager()
 // createEmployee()
+const writeFile = data => {
+    fs.writeFile('./dist/index.html', data, err => {
+        if (err) {
+            console.log(err)
+            return;
+        } else {
+            console.log("Your team profile has been created! Check dist folder for the html!")
+        }
+    })
+}
 
 createManager()
 .then(createEmployee)
